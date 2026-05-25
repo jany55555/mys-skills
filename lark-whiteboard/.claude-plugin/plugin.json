@@ -1,0 +1,8 @@
+{
+    "name":  "lark-whiteboard",
+    "version":  "1.0.0",
+    "description":  "飞书画板：查询和编辑画板，导出预览图片，使用 DSL/PlantUML/Mermaid 更新内容。",
+    "skills":  [
+                   "../SKILL.md"
+               ]
+}

@@ -1,0 +1,8 @@
+{
+    "name":  "image-resize",
+    "version":  "1.0.0",
+    "description":  "按宽高或最长边缩放图片，支持批量缩放。",
+    "skills":  [
+                   "../SKILL.md"
+               ]
+}

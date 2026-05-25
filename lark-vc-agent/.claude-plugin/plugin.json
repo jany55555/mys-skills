@@ -1,0 +1,8 @@
+{
+    "name":  "lark-vc-agent",
+    "version":  "1.0.0",
+    "description":  "飞书视频会议机器人：代用户加入/离开会议，读取会中实时事件。",
+    "skills":  [
+                   "../SKILL.md"
+               ]
+}

@@ -1,0 +1,8 @@
+{
+    "name":  "lark-doc",
+    "version":  "1.0.0",
+    "description":  "飞书云文档/Docx/知识库 Wiki：创建、读取、编辑飞书文档内容。",
+    "skills":  [
+                   "../SKILL.md"
+               ]
+}

@@ -1,0 +1,8 @@
+{
+    "name":  "lark-shared",
+    "version":  "1.0.0",
+    "description":  "飞书 CLI 共享基础：应用配置初始化、认证登录、身份切换、权限与 scope 管理。",
+    "skills":  [
+                   "../SKILL.md"
+               ]
+}

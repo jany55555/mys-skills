@@ -1,0 +1,8 @@
+{
+    "name":  "image-format-convert",
+    "version":  "1.0.0",
+    "description":  "在 PNG/JPEG/WebP/AVIF/BMP/TIFF/GIF 之间转换图片格式，支持批量转格式。",
+    "skills":  [
+                   "../SKILL.md"
+               ]
+}
