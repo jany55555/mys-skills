@@ -1,0 +1,9 @@
+{
+  "name": "image-sprite-slice-skill",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "mys-games": "file:../../../Desktop/work/mys-games",
+    "sharp": "^0.34.2"
+  }
+}

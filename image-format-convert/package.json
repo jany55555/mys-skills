@@ -1,0 +1,8 @@
+{
+  "name": "image-format-convert-skill",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "sharp": "^0.34.2"
+  }
+}
