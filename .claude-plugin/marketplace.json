@@ -1,199 +1,361 @@
 {
-  "name": "Claude Agent Skills",
-  "description": "A collection of Claude agent skills for image processing and Lark/Feishu integrations.",
+  "name": "mys-skills",
   "version": "1.0.0",
+  "metadata": {
+    "description": "A collection of Claude agent skills for image processing and Lark/Feishu integrations."
+  },
   "plugins": [
     {
       "name": "image-crop",
       "version": "1.0.0",
       "description": "按目标尺寸或指定矩形裁剪图片，适用于裁剪图片、居中裁剪、按区域裁图、批量裁剪。",
-      "path": "image-crop/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-crop"
+      }
     },
     {
       "name": "image-format-convert",
       "version": "1.0.0",
       "description": "在 PNG/JPEG/WebP/AVIF/BMP/TIFF/GIF 之间转换图片格式，支持批量转格式。",
-      "path": "image-format-convert/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-format-convert"
+      }
     },
     {
       "name": "image-lossless-optimize",
       "version": "1.0.0",
       "description": "对 PNG/JPG/JPEG/WebP 做尽量无视觉损失的图片优化，保留尺寸与主要视觉效果。",
-      "path": "image-lossless-optimize/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-lossless-optimize"
+      }
     },
     {
       "name": "image-metadata-inspect",
       "version": "1.0.0",
       "description": "查看图片元信息，包括尺寸、格式、alpha、EXIF，支持批量检查。",
-      "path": "image-metadata-inspect/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-metadata-inspect"
+      }
     },
     {
       "name": "image-resize",
       "version": "1.0.0",
       "description": "按宽高或最长边缩放图片，支持批量缩放。",
-      "path": "image-resize/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-resize"
+      }
     },
     {
       "name": "image-sprite-slice",
       "version": "1.0.0",
       "description": "按精灵图网格或指定切片尺寸拆分 sprite sheet，支持切雪碧图、切序列帧。",
-      "path": "image-sprite-slice/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-sprite-slice"
+      }
     },
     {
       "name": "image-webp-convert",
       "version": "1.0.0",
       "description": "将 PNG/JPG/JPEG 批量转换为 WebP，默认保真优先。",
-      "path": "image-webp-convert/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "image-webp-convert"
+      }
     },
     {
       "name": "lark-approval",
       "version": "1.0.0",
       "description": "飞书审批 API：审批实例、审批任务管理。",
-      "path": "lark-approval/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-approval"
+      }
     },
     {
       "name": "lark-attendance",
       "version": "1.0.0",
       "description": "飞书考勤打卡：查询自己的考勤打卡记录。",
-      "path": "lark-attendance/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-attendance"
+      }
     },
     {
       "name": "lark-base",
       "version": "1.2.0",
       "description": "操作飞书多维表格（Base）：搜索、建表、字段管理、记录读写、视图配置、工作流等。",
-      "path": "lark-base/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-base"
+      }
     },
     {
       "name": "lark-calendar",
       "version": "1.0.0",
       "description": "飞书日历：查看/搜索日程、创建/更新日程、管理参会人、查询忙闲状态、预定会议室。",
-      "path": "lark-calendar/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-calendar"
+      }
     },
     {
       "name": "lark-contact",
       "version": "1.0.0",
       "description": "飞书通讯录：按姓名/邮箱解析员工 open_id，反查姓名/部门/邮箱/联系方式。",
-      "path": "lark-contact/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-contact"
+      }
     },
     {
       "name": "lark-doc",
       "version": "1.0.0",
       "description": "飞书云文档/Docx/知识库 Wiki：创建、读取、编辑飞书文档内容。",
-      "path": "lark-doc/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-doc"
+      }
     },
     {
       "name": "lark-drive",
       "version": "1.0.0",
       "description": "飞书云空间：上传下载文件、创建文件夹、复制/移动/删除文件、管理文档权限。",
-      "path": "lark-drive/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-drive"
+      }
     },
     {
       "name": "lark-event",
       "version": "1.0.0",
       "description": "飞书实时事件监听：订阅消息接收、反应、群成员变更等事件流。",
-      "path": "lark-event/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-event"
+      }
     },
     {
       "name": "lark-im",
       "version": "1.0.0",
       "description": "飞书即时通讯：收发消息、管理群聊、上传下载图片和文件、管理表情回复。",
-      "path": "lark-im/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-im"
+      }
     },
     {
       "name": "lark-mail",
       "version": "1.0.0",
       "description": "飞书邮箱：起草、发送、回复、转发、查看和搜索邮件，管理草稿、附件、邮件规则。",
-      "path": "lark-mail/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-mail"
+      }
     },
     {
       "name": "lark-markdown",
       "version": "1.0.0",
       "description": "飞书 Markdown：查看、创建、上传、编辑和比较 Markdown 文件。",
-      "path": "lark-markdown/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-markdown"
+      }
     },
     {
       "name": "lark-minutes",
       "version": "1.0.0",
       "description": "飞书妙记：查询妙记列表、获取 AI 产物（总结/待办/章节）、上传音视频生成妙记。",
-      "path": "lark-minutes/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-minutes"
+      }
     },
     {
       "name": "lark-okr",
       "version": "1.0.0",
       "description": "飞书 OKR：管理目标与关键结果，查看和编辑 OKR 周期、目标、对齐关系。",
-      "path": "lark-okr/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-okr"
+      }
     },
     {
       "name": "lark-openapi-explorer",
       "version": "1.0.0",
       "description": "飞书原生 OpenAPI 探索：挖掘未经 CLI 封装的原生飞书 OpenAPI 接口。",
-      "path": "lark-openapi-explorer/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-openapi-explorer"
+      }
     },
     {
       "name": "lark-shared",
       "version": "1.0.0",
       "description": "飞书 CLI 共享基础：应用配置初始化、认证登录、身份切换、权限与 scope 管理。",
-      "path": "lark-shared/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-shared"
+      }
     },
     {
       "name": "lark-sheets",
       "version": "1.0.0",
       "description": "飞书电子表格：创建表格、批量读写数据、查找单元格内容、导出表格文件。",
-      "path": "lark-sheets/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-sheets"
+      }
     },
     {
       "name": "lark-skill-maker",
       "version": "1.0.0",
       "description": "创建 lark-cli 的自定义 Skill，封装飞书 API 操作为可复用的 Skill。",
-      "path": "lark-skill-maker/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-skill-maker"
+      }
     },
     {
       "name": "lark-slides",
       "version": "1.0.0",
       "description": "飞书幻灯片：创建和编辑幻灯片，管理幻灯片页面（创建、删除、读取、替换）。",
-      "path": "lark-slides/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-slides"
+      }
     },
     {
       "name": "lark-task",
       "version": "1.0.0",
       "description": "飞书任务：创建待办、查看和更新任务状态、拆分子任务、管理任务清单。",
-      "path": "lark-task/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-task"
+      }
     },
     {
       "name": "lark-vc",
       "version": "1.0.0",
       "description": "飞书视频会议：搜索历史会议、查询会议纪要产物、查询参会人快照。",
-      "path": "lark-vc/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-vc"
+      }
     },
     {
       "name": "lark-vc-agent",
       "version": "1.0.0",
       "description": "飞书视频会议机器人：代用户加入/离开会议，读取会中实时事件。",
-      "path": "lark-vc-agent/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-vc-agent"
+      }
     },
     {
       "name": "lark-whiteboard",
       "version": "1.0.0",
       "description": "飞书画板：查询和编辑画板，导出预览图片，使用 DSL/PlantUML/Mermaid 更新内容。",
-      "path": "lark-whiteboard/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-whiteboard"
+      }
     },
     {
       "name": "lark-wiki",
       "version": "1.0.0",
       "description": "飞书知识库：管理知识空间、空间成员和文档节点，组织文档层级结构。",
-      "path": "lark-wiki/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-wiki"
+      }
     },
     {
       "name": "lark-workflow-meeting-summary",
       "version": "1.0.0",
       "description": "会议纪要整理工作流：汇总指定时间范围内的会议纪要并生成结构化报告。",
-      "path": "lark-workflow-meeting-summary/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-workflow-meeting-summary"
+      }
     },
     {
       "name": "lark-workflow-standup-report",
       "version": "1.0.0",
       "description": "日程待办摘要：生成指定日期的日程与未完成任务摘要。",
-      "path": "lark-workflow-standup-report/SKILL.md"
+      "strict": false,
+      "source": {
+        "source": "git-subdir",
+        "repo": "jany55555/mys-skills",
+        "subdir": "lark-workflow-standup-report"
+      }
     }
   ]
 }
