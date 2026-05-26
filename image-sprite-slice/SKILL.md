@@ -32,22 +32,22 @@ metadata:
 
 ```powershell
 # 按切片尺寸拆分
-npx jany-image-cli slice "C:\path\to\sheet.png" --tile-width 128 --tile-height 128
+npx @jany555/image-cli slice "C:\path\to\sheet.png" --tile-width 128 --tile-height 128
 
 # 按行列数拆分
-npx jany-image-cli slice "C:\path\to\sheet.png" --columns 6 --rows 4
+npx @jany555/image-cli slice "C:\path\to\sheet.png" --columns 6 --rows 4
 
 # 批量处理目录
-npx jany-image-cli slice "C:\path\to\sheets" --recursive --tile-width 64 --tile-height 64
+npx @jany555/image-cli slice "C:\path\to\sheets" --recursive --tile-width 64 --tile-height 64
 
 # 跳过空白切片
-npx jany-image-cli slice "C:\path\to\sheet.png" --columns 8 --rows 8 --trim-empty
+npx @jany555/image-cli slice "C:\path\to\sheet.png" --columns 8 --rows 8 --trim-empty
 
 # 输出到指定目录并指定前缀
-npx jany-image-cli slice "C:\path\to\sheet.png" --tile-width 64 --tile-height 64 --output-dir "C:\path\to\out" --prefix hero
+npx @jany555/image-cli slice "C:\path\to\sheet.png" --tile-width 64 --tile-height 64 --output-dir "C:\path\to\out" --prefix hero
 
 # 转成指定格式
-npx jany-image-cli slice "C:\path\to\sheet.png" --columns 4 --rows 4 --format png
+npx @jany555/image-cli slice "C:\path\to\sheet.png" --columns 4 --rows 4 --format png
 ```
 
 ## 参数说明

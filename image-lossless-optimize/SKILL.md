@@ -30,19 +30,19 @@ metadata:
 
 ```powershell
 # 优化单张图片
-npx jany-image-cli optimize "C:\path\to\image.png"
+npx @jany555/image-cli optimize "C:\path\to\image.png"
 
 # 批量优化目录
-npx jany-image-cli optimize "C:\path\to\images" --recursive
+npx @jany555/image-cli optimize "C:\path\to\images" --recursive
 
 # 优化后覆盖原图
-npx jany-image-cli optimize "C:\path\to\images" --recursive --replace
+npx @jany555/image-cli optimize "C:\path\to\images" --recursive --replace
 
 # 包含 JPEG
-npx jany-image-cli optimize "C:\path\to\photos" --recursive --include-jpeg
+npx @jany555/image-cli optimize "C:\path\to\photos" --recursive --include-jpeg
 
 # 只预览结果
-npx jany-image-cli optimize "C:\path\to\images" --recursive --dry-run
+npx @jany555/image-cli optimize "C:\path\to\images" --recursive --dry-run
 ```
 
 ## 参数说明

@@ -29,22 +29,22 @@ metadata:
 
 ```powershell
 # 按宽度缩放
-npx jany-image-cli resize "C:\path\to\image.png" --width 750
+npx @jany555/image-cli resize "C:\path\to\image.png" --width 750
 
 # 按高度缩放
-npx jany-image-cli resize "C:\path\to\image.png" --height 1334
+npx @jany555/image-cli resize "C:\path\to\image.png" --height 1334
 
 # 限制最长边
-npx jany-image-cli resize "C:\path\to\images" --recursive --max-side 1024 --without-enlargement
+npx @jany555/image-cli resize "C:\path\to\images" --recursive --max-side 1024 --without-enlargement
 
 # 指定输出目录
-npx jany-image-cli resize "C:\path\to\images" --recursive --width 512 --output-dir "C:\path\to\out"
+npx @jany555/image-cli resize "C:\path\to\images" --recursive --width 512 --output-dir "C:\path\to\out"
 
 # 转成指定格式
-npx jany-image-cli resize "C:\path\to\image.png" --width 750 --format webp
+npx @jany555/image-cli resize "C:\path\to\image.png" --width 750 --format webp
 
 # 覆盖原图
-npx jany-image-cli resize "C:\path\to\images" --recursive --max-side 1024 --replace
+npx @jany555/image-cli resize "C:\path\to\images" --recursive --max-side 1024 --replace
 ```
 
 ## 参数说明

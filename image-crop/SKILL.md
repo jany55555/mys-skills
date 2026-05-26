@@ -32,25 +32,25 @@ metadata:
 
 ```powershell
 # 居中裁剪到指定尺寸
-npx jany-image-cli crop "C:\path\to\image.png" --width 750 --height 750
+npx @jany555/image-cli crop "C:\path\to\image.png" --width 750 --height 750
 
 # 顶部裁剪
-npx jany-image-cli crop "C:\path\to\image.png" --width 750 --height 1334 --position north
+npx @jany555/image-cli crop "C:\path\to\image.png" --width 750 --height 1334 --position north
 
 # 按矩形区域裁剪
-npx jany-image-cli crop "C:\path\to\image.png" --left 100 --top 50 --crop-width 400 --crop-height 300
+npx @jany555/image-cli crop "C:\path\to\image.png" --left 100 --top 50 --crop-width 400 --crop-height 300
 
 # 批量裁剪目录
-npx jany-image-cli crop "C:\path\to\images" --recursive --width 512 --height 512
+npx @jany555/image-cli crop "C:\path\to\images" --recursive --width 512 --height 512
 
 # 输出到指定目录
-npx jany-image-cli crop "C:\path\to\images" --recursive --width 512 --height 512 --output-dir "C:\path\to\out"
+npx @jany555/image-cli crop "C:\path\to\images" --recursive --width 512 --height 512 --output-dir "C:\path\to\out"
 
 # 转成指定格式
-npx jany-image-cli crop "C:\path\to\image.png" --width 512 --height 512 --format webp
+npx @jany555/image-cli crop "C:\path\to\image.png" --width 512 --height 512 --format webp
 
 # 覆盖原图
-npx jany-image-cli crop "C:\path\to\images" --recursive --width 512 --height 512 --replace
+npx @jany555/image-cli crop "C:\path\to\images" --recursive --width 512 --height 512 --replace
 ```
 
 ## 参数说明

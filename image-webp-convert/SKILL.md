@@ -31,22 +31,22 @@ metadata:
 
 ```powershell
 # 单文件转换
-npx jany-image-cli webp "C:\path\to\image.png"
+npx @jany555/image-cli webp "C:\path\to\image.png"
 
 # 批量转换目录
-npx jany-image-cli webp "C:\path\to\images" --recursive
+npx @jany555/image-cli webp "C:\path\to\images" --recursive
 
 # 转换后删除原图
-npx jany-image-cli webp "C:\path\to\images" --recursive --replace
+npx @jany555/image-cli webp "C:\path\to\images" --recursive --replace
 
 # JPEG 高质量转换
-npx jany-image-cli webp "C:\path\to\photo.jpg" --quality 100
+npx @jany555/image-cli webp "C:\path\to\photo.jpg" --quality 100
 
 # 跳过 JPEG，只处理 PNG
-npx jany-image-cli webp "C:\path\to\images" --recursive --jpg-mode skip
+npx @jany555/image-cli webp "C:\path\to\images" --recursive --jpg-mode skip
 
 # 转换结果比原图更大时跳过写入
-npx jany-image-cli webp "C:\path\to\images" --recursive --skip-larger
+npx @jany555/image-cli webp "C:\path\to\images" --recursive --skip-larger
 ```
 
 ## 参数说明

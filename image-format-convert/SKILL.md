@@ -32,22 +32,22 @@ metadata:
 
 ```powershell
 # PNG 转 JPEG
-npx jany-image-cli convert "C:\path\to\image.png" --to jpeg
+npx @jany555/image-cli convert "C:\path\to\image.png" --to jpeg
 
 # JPEG 转 WebP
-npx jany-image-cli convert "C:\path\to\image.jpg" --to webp --quality 95
+npx @jany555/image-cli convert "C:\path\to\image.jpg" --to webp --quality 95
 
 # PNG 无损转 WebP
-npx jany-image-cli convert "C:\path\to\image.png" --to webp --lossless
+npx @jany555/image-cli convert "C:\path\to\image.png" --to webp --lossless
 
 # 批量转格式
-npx jany-image-cli convert "C:\path\to\images" --recursive --to webp
+npx @jany555/image-cli convert "C:\path\to\images" --recursive --to webp
 
 # 输出更大时跳过
-npx jany-image-cli convert "C:\path\to\images" --recursive --to avif --skip-larger
+npx @jany555/image-cli convert "C:\path\to\images" --recursive --to avif --skip-larger
 
 # 透明图转 JPEG 并铺底色
-npx jany-image-cli convert "C:\path\to\image.png" --to jpeg --flatten-bg ffffff
+npx @jany555/image-cli convert "C:\path\to\image.png" --to jpeg --flatten-bg ffffff
 ```
 
 ## 参数说明

@@ -27,19 +27,19 @@ metadata:
 
 ```powershell
 # 查看单张图片
-npx jany-image-cli inspect "C:\path\to\image.png"
+npx @jany555/image-cli inspect "C:\path\to\image.png"
 
 # 批量查看目录
-npx jany-image-cli inspect "C:\path\to\images" --recursive
+npx @jany555/image-cli inspect "C:\path\to\images" --recursive
 
 # 输出 JSON
-npx jany-image-cli inspect "C:\path\to\images" --recursive --json
+npx @jany555/image-cli inspect "C:\path\to\images" --recursive --json
 
 # 输出 EXIF 摘要
-npx jany-image-cli inspect "C:\path\to\photo.jpg" --exif
+npx @jany555/image-cli inspect "C:\path\to\photo.jpg" --exif
 
 # 写入 JSON 文件
-npx jany-image-cli inspect "C:\path\to\images" --recursive --json --output "C:\path\to\report.json"
+npx @jany555/image-cli inspect "C:\path\to\images" --recursive --json --output "C:\path\to\report.json"
 ```
 
 ## 参数说明
