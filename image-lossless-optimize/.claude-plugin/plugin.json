@@ -3,6 +3,6 @@
     "version":  "1.0.0",
     "description":  "对 PNG/JPG/JPEG/WebP 做尽量无视觉损失的图片优化，保留尺寸与主要视觉效果。",
     "skills":  [
-                   "../SKILL.md"
+                   "./"
                ]
 }

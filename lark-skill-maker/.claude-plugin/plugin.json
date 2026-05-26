@@ -3,6 +3,6 @@
     "version":  "1.0.0",
     "description":  "创建 lark-cli 的自定义 Skill，封装飞书 API 操作为可复用的 Skill。",
     "skills":  [
-                   "../SKILL.md"
+                   "./"
                ]
 }

@@ -3,6 +3,6 @@
     "version":  "1.0.0",
     "description":  "飞书原生 OpenAPI 探索：挖掘未经 CLI 封装的原生飞书 OpenAPI 接口。",
     "skills":  [
-                   "../SKILL.md"
+                   "./"
                ]
 }
