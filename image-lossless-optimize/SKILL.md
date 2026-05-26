@@ -29,44 +29,138 @@ metadata:
 - 不缩放、不裁剪、不改尺寸
 - 默认保留原图，只写优化结果
 
-## 首次使用
+## 执行方式
 
-先安装依赖：
+将以下脚本内容写入临时文件，然后执行。
+
+### 准备临时目录和依赖
 
 ```powershell
-npm install --prefix "C:\Users\huanglinhuan\.claude\skills\image-lossless-optimize"
+$tmp = "$env:TEMP\image-lossless-optimize-skill"
+New-Item -ItemType Directory -Path $tmp -Force | Out-Null
+Set-Content -Path "$tmp\package.json" -Value '{"type":"module"}' -Encoding UTF8
+npm install --prefix $tmp sharp
 ```
 
-## 命令
+### 脚本内容（写入 $tmp\optimize.mjs）
 
-### 优化单张图片
+```js
+#!/usr/bin/env node
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import sharp from 'sharp'
 
-```powershell
-node "C:\Users\huanglinhuan\.claude\skills\image-lossless-optimize\scripts\optimize.mjs" "C:\path\to\image.png"
+const SUPPORTED_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp'])
+
+function parseArgs(argv) {
+  const options = { inputPath: '', recursive: false, replace: false, outputDir: '', includeJpeg: false, dryRun: false }
+  const args = [...argv]
+  options.inputPath = args.shift() ?? ''
+  while (args.length > 0) {
+    const arg = args.shift()
+    if (arg === '--recursive') { options.recursive = true; continue }
+    if (arg === '--replace') { options.replace = true; continue }
+    if (arg === '--include-jpeg') { options.includeJpeg = true; continue }
+    if (arg === '--dry-run') { options.dryRun = true; continue }
+    if (arg === '--output-dir') { const v = args.shift(); if (!v) throw new Error('--output-dir requires a path'); options.outputDir = v; continue }
+    throw new Error(`Unknown argument: ${arg}`)
+  }
+  if (!options.inputPath) throw new Error('Missing <file-or-dir>')
+  return options
+}
+async function collectFiles(targetPath, recursive) {
+  const stat = await fs.stat(targetPath)
+  if (stat.isFile()) return [targetPath]
+  if (!stat.isDirectory()) return []
+  const results = []
+  const entries = await fs.readdir(targetPath, { withFileTypes: true })
+  for (const entry of entries) {
+    const fullPath = path.join(targetPath, entry.name)
+    if (entry.isFile()) { results.push(fullPath); continue }
+    if (entry.isDirectory() && recursive) results.push(...await collectFiles(fullPath, true))
+  }
+  return results
+}
+function formatBytes(bytes) {
+  if (bytes < 1024) return `${bytes} B`
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
+}
+function getOutputPath(filePath, rootInputPath, outputDir, replace) {
+  if (replace && !outputDir) return filePath
+  const parsed = path.parse(filePath)
+  const relativeDir = path.relative(rootInputPath, parsed.dir)
+  const normalizedRelativeDir = relativeDir === '.' ? '' : relativeDir
+  if (!outputDir) return path.join(parsed.dir, `${parsed.name}.optimized${parsed.ext}`)
+  return path.join(outputDir, normalizedRelativeDir, `${parsed.name}${parsed.ext}`)
+}
+async function optimizeBuffer(filePath, sourceBuffer, includeJpeg) {
+  const ext = path.extname(filePath).toLowerCase()
+  if (ext === '.png') return sharp(sourceBuffer, { animated: true }).withMetadata().png({ compressionLevel: 9, effort: 10 }).toBuffer()
+  if (ext === '.webp') return sharp(sourceBuffer, { animated: true }).withMetadata().webp({ lossless: true, effort: 6 }).toBuffer()
+  if ((ext === '.jpg' || ext === '.jpeg') && includeJpeg) return sharp(sourceBuffer, { animated: true }).withMetadata().jpeg({ quality: 100, mozjpeg: true }).toBuffer()
+  return null
+}
+async function optimizeFile(filePath, options, rootInputPath, stats) {
+  const ext = path.extname(filePath).toLowerCase()
+  if (!SUPPORTED_EXTENSIONS.has(ext)) { stats.skipped += 1; console.log(`SKIPPED ${filePath} unsupported format`); return }
+  if ((ext === '.jpg' || ext === '.jpeg') && !options.includeJpeg) { stats.skipped += 1; console.log(`SKIPPED ${filePath} jpeg disabled by default`); return }
+  const sourceBuffer = await fs.readFile(filePath)
+  const sourceSize = sourceBuffer.byteLength
+  const optimizedBuffer = await optimizeBuffer(filePath, sourceBuffer, options.includeJpeg)
+  if (!optimizedBuffer) { stats.skipped += 1; console.log(`SKIPPED ${filePath} no optimizer available`); return }
+  const optimizedSize = optimizedBuffer.byteLength
+  if (optimizedSize >= sourceSize) { stats.skipped += 1; console.log(`SKIPPED ${filePath} not smaller (${formatBytes(sourceSize)} -> ${formatBytes(optimizedSize)})`); return }
+  const outputPath = getOutputPath(filePath, rootInputPath, options.outputDir, options.replace)
+  if (options.dryRun) { stats.previewed += 1; console.log(`DRY-RUN ${filePath} -> ${outputPath} (${formatBytes(sourceSize)} -> ${formatBytes(optimizedSize)})`); return }
+  await fs.mkdir(path.dirname(outputPath), { recursive: true })
+  await fs.writeFile(outputPath, optimizedBuffer)
+  stats.optimized += 1; stats.sourceBytes += sourceSize; stats.outputBytes += optimizedSize
+  console.log(`OPTIMIZED ${filePath} -> ${outputPath} (${formatBytes(sourceSize)} -> ${formatBytes(optimizedSize)})`)
+}
+async function main() {
+  try {
+    const options = parseArgs(process.argv.slice(2))
+    const absoluteInputPath = path.resolve(options.inputPath)
+    const inputStat = await fs.stat(absoluteInputPath)
+    const rootInputPath = inputStat.isDirectory() ? absoluteInputPath : path.dirname(absoluteInputPath)
+    const files = await collectFiles(absoluteInputPath, options.recursive)
+    const stats = { optimized: 0, skipped: 0, previewed: 0, errors: 0, sourceBytes: 0, outputBytes: 0 }
+    for (const filePath of files) {
+      try { await optimizeFile(filePath, options, rootInputPath, stats) }
+      catch (error) { stats.errors += 1; console.log(`ERROR ${filePath} ${error instanceof Error ? error.message : String(error)}`) }
+    }
+    console.log('---')
+    console.log(`optimized: ${stats.optimized}`)
+    console.log(`skipped: ${stats.skipped}`)
+    console.log(`previewed: ${stats.previewed}`)
+    console.log(`errors: ${stats.errors}`)
+    if (stats.optimized > 0) { console.log(`source-bytes: ${stats.sourceBytes}`); console.log(`output-bytes: ${stats.outputBytes}`); console.log(`saved-bytes: ${stats.sourceBytes - stats.outputBytes}`) }
+  } catch (error) { console.error(error instanceof Error ? error.message : String(error)); process.exitCode = 1 }
+}
+main()
 ```
 
-### 批量优化目录
+## 示例
 
 ```powershell
-node "C:\Users\huanglinhuan\.claude\skills\image-lossless-optimize\scripts\optimize.mjs" "C:\path\to\images" --recursive
-```
+$tmp = "$env:TEMP\image-lossless-optimize-skill"
+# 将上方脚本写入 $tmp\optimize.mjs 后执行：
 
-### 优化后覆盖原图
+# 优化单张图片
+node "$tmp\optimize.mjs" "C:\path\to\image.png"
 
-```powershell
-node "C:\Users\huanglinhuan\.claude\skills\image-lossless-optimize\scripts\optimize.mjs" "C:\path\to\images" --recursive --replace
-```
+# 批量优化目录
+node "$tmp\optimize.mjs" "C:\path\to\images" --recursive
 
-### 包含 JPEG
+# 优化后覆盖原图
+node "$tmp\optimize.mjs" "C:\path\to\images" --recursive --replace
 
-```powershell
-node "C:\Users\huanglinhuan\.claude\skills\image-lossless-optimize\scripts\optimize.mjs" "C:\path\to\photos" --recursive --include-jpeg
-```
+# 包含 JPEG
+node "$tmp\optimize.mjs" "C:\path\to\photos" --recursive --include-jpeg
 
-### 只预览结果
-
-```powershell
-node "C:\Users\huanglinhuan\.claude\skills\image-lossless-optimize\scripts\optimize.mjs" "C:\path\to\images" --recursive --dry-run
+# 只预览结果
+node "$tmp\optimize.mjs" "C:\path\to\images" --recursive --dry-run
 ```
 
 ## 参数说明
