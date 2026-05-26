@@ -1,8 +1,8 @@
 {
-    "name":  "image-metadata-inspect",
-    "version":  "1.0.0",
-    "description":  "查看图片元信息，包括尺寸、格式、alpha、EXIF，支持批量检查。",
-    "skills":  [
-                   "./"
-               ]
+  "name": "image-metadata-inspect",
+  "version": "1.0.1",
+  "description": "查看图片元信息，包括尺寸、格式、alpha、EXIF，支持批量检查。",
+  "skills": [
+    "./"
+  ]
 }

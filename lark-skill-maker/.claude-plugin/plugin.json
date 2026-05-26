@@ -1,8 +1,8 @@
 {
-    "name":  "lark-skill-maker",
-    "version":  "1.0.0",
-    "description":  "创建 lark-cli 的自定义 Skill，封装飞书 API 操作为可复用的 Skill。",
-    "skills":  [
-                   "./"
-               ]
+  "name": "lark-skill-maker",
+  "version": "1.0.1",
+  "description": "创建 lark-cli 的自定义 Skill，封装飞书 API 操作为可复用的 Skill。",
+  "skills": [
+    "./"
+  ]
 }

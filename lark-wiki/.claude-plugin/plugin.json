@@ -1,8 +1,8 @@
 {
-    "name":  "lark-wiki",
-    "version":  "1.0.0",
-    "description":  "飞书知识库：管理知识空间、空间成员和文档节点，组织文档层级结构。",
-    "skills":  [
-                   "./"
-               ]
+  "name": "lark-wiki",
+  "version": "1.0.1",
+  "description": "飞书知识库：管理知识空间、空间成员和文档节点，组织文档层级结构。",
+  "skills": [
+    "./"
+  ]
 }

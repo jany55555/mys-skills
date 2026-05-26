@@ -1,8 +1,8 @@
 {
-    "name":  "lark-calendar",
-    "version":  "1.0.0",
-    "description":  "飞书日历：查看/搜索日程、创建/更新日程、管理参会人、查询忙闲状态、预定会议室。",
-    "skills":  [
-                   "./"
-               ]
+  "name": "lark-calendar",
+  "version": "1.0.1",
+  "description": "飞书日历：查看/搜索日程、创建/更新日程、管理参会人、查询忙闲状态、预定会议室。",
+  "skills": [
+    "./"
+  ]
 }

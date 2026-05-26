@@ -1,8 +1,8 @@
 {
-    "name":  "lark-event",
-    "version":  "1.0.0",
-    "description":  "飞书实时事件监听：订阅消息接收、反应、群成员变更等事件流。",
-    "skills":  [
-                   "./"
-               ]
+  "name": "lark-event",
+  "version": "1.0.1",
+  "description": "飞书实时事件监听：订阅消息接收、反应、群成员变更等事件流。",
+  "skills": [
+    "./"
+  ]
 }

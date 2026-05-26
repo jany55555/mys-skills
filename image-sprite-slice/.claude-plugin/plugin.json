@@ -1,8 +1,8 @@
 {
-    "name":  "image-sprite-slice",
-    "version":  "1.0.0",
-    "description":  "按精灵图网格或指定切片尺寸拆分 sprite sheet，支持切雪碧图、切序列帧。",
-    "skills":  [
-                   "./"
-               ]
+  "name": "image-sprite-slice",
+  "version": "1.0.1",
+  "description": "按精灵图网格或指定切片尺寸拆分 sprite sheet，支持切雪碧图、切序列帧。",
+  "skills": [
+    "./"
+  ]
 }
