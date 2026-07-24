@@ -1,8 +1,0 @@
-{
-  "name": "lark-contact",
-  "version": "1.0.1",
-  "description": "飞书通讯录：按姓名/邮箱解析员工 open_id，反查姓名/部门/邮箱/联系方式。",
-  "skills": [
-    "./"
-  ]
-}

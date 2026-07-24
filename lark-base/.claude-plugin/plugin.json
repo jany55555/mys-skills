@@ -1,8 +1,0 @@
-{
-  "name": "lark-base",
-  "version": "1.2.1",
-  "description": "操作飞书多维表格（Base）：搜索、建表、字段管理、记录读写、视图配置、工作流等。",
-  "skills": [
-    "./"
-  ]
-}

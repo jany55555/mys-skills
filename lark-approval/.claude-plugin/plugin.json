@@ -1,8 +1,0 @@
-{
-  "name": "lark-approval",
-  "version": "1.0.1",
-  "description": "飞书审批 API：审批实例、审批任务管理。",
-  "skills": [
-    "./"
-  ]
-}

@@ -1,8 +1,0 @@
-{
-  "name": "image-webp-convert-skill",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "sharp": "^0.34.2"
-  }
-}

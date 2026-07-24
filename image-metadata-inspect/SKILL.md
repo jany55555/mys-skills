@@ -8,6 +8,8 @@ metadata:
     bins: ["node"]
 ---
 
+**CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../image-shared/SKILL.md`](../image-shared/SKILL.md)，其中包含通用参数、安全规则和跨 skill 路由。**
+
 # image-metadata-inspect
 
 查看图片元信息，适合在转 WebP、压缩、换皮、上传素材前做检查。

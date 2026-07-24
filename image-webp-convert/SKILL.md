@@ -8,6 +8,8 @@ metadata:
     bins: ["node"]
 ---
 
+**CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../image-shared/SKILL.md`](../image-shared/SKILL.md)，其中包含通用参数、安全规则和跨 skill 路由。**
+
 # image-webp-convert
 
 将图片转换为 WebP，默认保真优先。

@@ -8,6 +8,8 @@ metadata:
     bins: ["node"]
 ---
 
+**CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../image-shared/SKILL.md`](../image-shared/SKILL.md)，其中包含通用参数、安全规则和跨 skill 路由。**
+
 # image-sprite-slice
 
 按精灵图网格或指定切片尺寸拆分 sprite sheet。

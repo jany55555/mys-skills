@@ -8,6 +8,8 @@ metadata:
     bins: ["node"]
 ---
 
+**CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../image-shared/SKILL.md`](../image-shared/SKILL.md)，其中包含通用参数、安全规则和跨 skill 路由。**
+
 # image-crop
 
 按目标尺寸或指定矩形裁剪图片。

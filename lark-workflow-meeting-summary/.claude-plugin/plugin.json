@@ -1,8 +1,0 @@
-{
-  "name": "lark-workflow-meeting-summary",
-  "version": "1.0.1",
-  "description": "会议纪要整理工作流：汇总指定时间范围内的会议纪要并生成结构化报告。",
-  "skills": [
-    "./"
-  ]
-}

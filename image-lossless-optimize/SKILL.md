@@ -8,6 +8,8 @@ metadata:
     bins: ["node"]
 ---
 
+**CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../image-shared/SKILL.md`](../image-shared/SKILL.md)，其中包含通用参数、安全规则和跨 skill 路由。**
+
 # image-lossless-optimize
 
 对图片做尽量无视觉损失的优化，保留宽高、透明通道和主要视觉效果。
