@@ -1,19 +1,18 @@
 ---
 name: image-bg-remove
-version: 1.0.0
+version: 1.1.0
 description: "用 AI 模型去除图片背景，输出透明底 PNG。适用于照片、复杂背景、任意图片的抠图，支持人像/物体/产品图。当用户提到去背景、AI 抠图、去白底/杂色背景、remove background、bg remove 时使用。纯色底贴纸图用 image-sticker-cutout 更快。"
 argument-hint: <file-or-dir> [--recursive] [--replace] [--output-dir <dir>] [--alpha-matting] [--dry-run]
 metadata:
   requires:
-    bins: ["python"]
-    pip: ["rembg"]
+    bins: ["node"]
 ---
 
 **CRITICAL — 开始前 MUST 先用 Read 工具读取 [`../image-shared/SKILL.md`](../image-shared/SKILL.md)，其中包含通用参数、安全规则和跨 skill 路由。**
 
 # image-bg-remove
 
-用 AI 模型（rembg + U2Net）去除图片背景，输出透明底 PNG。支持任意背景类型，不要求纯色底。
+用 AI 模型（BiRefNet）去除图片背景，输出透明底 PNG。支持任意背景类型，不要求纯色底。
 
 ## 选哪种模式
 
@@ -29,22 +28,22 @@ metadata:
 
 ```powershell
 # 单张图片去背
-python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\image.jpg"
+npx @jany555/image-cli rmbg "C:\path\to\image.jpg"
 
 # 毛发/复杂边缘（慢但准）
-python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\image.jpg" --alpha-matting
+npx @jany555/image-cli rmbg "C:\path\to\image.jpg" --alpha-matting
 
 # 批量处理目录
-python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\images" --recursive
+npx @jany555/image-cli rmbg "C:\path\to\images" --recursive
 
 # 输出到指定目录
-python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\images" --recursive --output-dir "C:\path\to\out"
+npx @jany555/image-cli rmbg "C:\path\to\images" --recursive --output-dir "C:\path\to\out"
 
 # 预览，不写文件
-python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\images" --recursive --dry-run
+npx @jany555/image-cli rmbg "C:\path\to\images" --recursive --dry-run
 
 # 处理后替换原图（需向用户确认）
-python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\image.jpg" --replace
+npx @jany555/image-cli rmbg "C:\path\to\image.jpg" --replace
 ```
 
 ## 参数说明
@@ -71,7 +70,14 @@ python .claude/skills/image-bg-remove/scripts/remove_bg.py "C:\path\to\image.jpg
 
 ## 首次运行说明
 
-首次运行会自动下载 U2Net 模型（约 170MB），下载完成后缓存在本地，后续运行无需重新下载。
+首次运行会自动下载 BiRefNet 模型（约 380MB），下载完成后缓存在本地 `~/.cache/huggingface`，后续运行无需重新下载。
+
+国内用户如果访问 HuggingFace 受限，可设置代理后运行：
+
+```powershell
+$env:HTTPS_PROXY = "http://127.0.0.1:7890"  # 替换为你的代理端口
+npx @jany555/image-cli rmbg "C:\path\to\image.jpg"
+```
 
 ## 不在本 skill 范围
 
