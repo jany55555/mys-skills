@@ -2,7 +2,7 @@
 name: image-bg-remove
 version: 1.1.0
 description: "用 AI 模型去除图片背景，输出透明底 PNG。适用于照片、复杂背景、任意图片的抠图，支持人像/物体/产品图。当用户提到去背景、AI 抠图、去白底/杂色背景、remove background、bg remove 时使用。纯色底贴纸图用 image-sticker-cutout 更快。"
-argument-hint: <file-or-dir> [--recursive] [--replace] [--output-dir <dir>] [--alpha-matting] [--dry-run]
+argument-hint: <file-or-dir> [--recursive] [--replace] [--output-dir <dir>] [--dry-run]
 metadata:
   requires:
     bins: ["node"]
@@ -12,14 +12,13 @@ metadata:
 
 # image-bg-remove
 
-用 AI 模型（BiRefNet）去除图片背景，输出透明底 PNG。支持任意背景类型，不要求纯色底。
+用 AI 模型（FeyNoBg）去除图片背景，输出透明底 PNG。支持任意背景类型，不要求纯色底。
 
 ## 选哪种模式
 
 | 想做什么 | 参数 |
 |---|---|
 | 快速去背（人像、物体、产品图） | 只传文件路径，不加额外参数 |
-| 毛发 / 半透明边缘精修 | 加 `--alpha-matting` |
 | 批量处理整个目录 | 加 `--recursive` |
 | 预览计划，不实际写文件 | 加 `--dry-run` |
 | 输出到单独目录 | 加 `--output-dir <dir>` |
@@ -29,9 +28,6 @@ metadata:
 ```powershell
 # 单张图片去背
 npx @jany555/image-cli rmbg "C:\path\to\image.jpg"
-
-# 毛发/复杂边缘（慢但准）
-npx @jany555/image-cli rmbg "C:\path\to\image.jpg" --alpha-matting
 
 # 批量处理目录
 npx @jany555/image-cli rmbg "C:\path\to\images" --recursive
@@ -54,7 +50,6 @@ npx @jany555/image-cli rmbg "C:\path\to\image.jpg" --replace
 | `--recursive` | 递归处理目录下所有支持格式的图片 |
 | `--replace` | 成功后删除原文件（不可逆，执行前必须向用户确认） |
 | `--output-dir <dir>` | 输出到指定目录，保持相对子目录结构 |
-| `--alpha-matting` | 启用 alpha matting 精修边缘，适合毛发/半透明场景，速度更慢 |
 | `--dry-run` | 只打印计划，不实际写文件 |
 
 ## 输出
@@ -70,7 +65,13 @@ npx @jany555/image-cli rmbg "C:\path\to\image.jpg" --replace
 
 ## 首次运行说明
 
-首次运行会自动下载 BiRefNet 模型（约 380MB），下载完成后缓存在本地 `~/.cache/huggingface`，后续运行无需重新下载。
+首次运行会自动下载 FeyNoBg 模型（约 300MB），下载完成后缓存在本地，后续运行无需重新下载。
+
+前置要求：本地需有 Python，并安装 `nobg` 和 `loadimg`：
+
+```powershell
+pip install nobg loadimg
+```
 
 国内用户如果访问 HuggingFace 受限，可设置代理后运行：
 
